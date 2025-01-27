@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shipment Tracking</title>
+</head>
+<body>
+  <h1>Track Your Shipment</h1>
+  <form id="trackingForm">
+    <label for="trackingNumber">Enter Tracking Number:</label>
+    <input type="text" id="trackingNumber" name="trackingNumber" required>
+    <button type="submit">Track</button>
+  </form>
+
+  <div id="trackingResult" style="margin-top: 20px;"></div>
+
+  <script>
+    document.getElementById('trackingForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const trackingNumber = document.getElementById('trackingNumber').value;
+
+      try {
+        const response = await fetch(`http://localhost:3000/track/${trackingNumber}`);
+        const data = await response.json();
+
+        const resultDiv = document.getElementById('trackingResult');
+        if (data.meta && data.meta.code === 200) {
+          const tracking = data.data.tracking;
+          resultDiv.innerHTML = `
+            <h2>Tracking Details</h2>
+            <p><strong>Status:</strong> ${tracking.status}</p>
+            <p><strong>Delivery Date:</strong> ${tracking.delivery_date || 'Not available'}</p>
+            <p><strong>Last Checkpoint:</strong> ${tracking.last_checkpoint.location} (${tracking.last_checkpoint.date})</p>
+          `;
+        } else {
+          resultDiv.innerHTML = `<p style="color: red;">Error: ${data.error || 'Unknown error'}</p>`;
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        document.getElementById('trackingResult').innerHTML = `<p style="color: red;">Error fetching tracking data.</p>`;
+      }
+    });
+  </script>
+</body>
+</html>

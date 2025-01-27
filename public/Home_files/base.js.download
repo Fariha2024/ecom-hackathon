@@ -1,0 +1,85 @@
+/*! modernizr 3.6.0 (Custom Build) | MIT *
+ * https://modernizr.com/download/?-webp-setclasses !*/
+ !function(e,n,A){function o(e,n){return typeof e===n}function t(){var e,n,A,t,a,i,l;for(var f in r)if(r.hasOwnProperty(f)){if(e=[],n=r[f],n.name&&(e.push(n.name.toLowerCase()),n.options&&n.options.aliases&&n.options.aliases.length))for(A=0;A<n.options.aliases.length;A++)e.push(n.options.aliases[A].toLowerCase());for(t=o(n.fn,"function")?n.fn():n.fn,a=0;a<e.length;a++)i=e[a],l=i.split("."),1===l.length?Modernizr[l[0]]=t:(!Modernizr[l[0]]||Modernizr[l[0]]instanceof Boolean||(Modernizr[l[0]]=new Boolean(Modernizr[l[0]])),Modernizr[l[0]][l[1]]=t),s.push((t?"":"no-")+l.join("-"))}}function a(e){var n=u.className,A=Modernizr._config.classPrefix||"";if(c&&(n=n.baseVal),Modernizr._config.enableJSClass){var o=new RegExp("(^|\\s)"+A+"no-js(\\s|$)");n=n.replace(o,"$1"+A+"js$2")}Modernizr._config.enableClasses&&(n+=" "+A+e.join(" "+A),c?u.className.baseVal=n:u.className=n)}function i(e,n){if("object"==typeof e)for(var A in e)f(e,A)&&i(A,e[A]);else{e=e.toLowerCase();var o=e.split("."),t=Modernizr[o[0]];if(2==o.length&&(t=t[o[1]]),"undefined"!=typeof t)return Modernizr;n="function"==typeof n?n():n,1==o.length?Modernizr[o[0]]=n:(!Modernizr[o[0]]||Modernizr[o[0]]instanceof Boolean||(Modernizr[o[0]]=new Boolean(Modernizr[o[0]])),Modernizr[o[0]][o[1]]=n),a([(n&&0!=n?"":"no-")+o.join("-")]),Modernizr._trigger(e,n)}return Modernizr}var s=[],r=[],l={_version:"3.6.0",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,n){var A=this;setTimeout(function(){n(A[e])},0)},addTest:function(e,n,A){r.push({name:e,fn:n,options:A})},addAsyncTest:function(e){r.push({name:null,fn:e})}},Modernizr=function(){};Modernizr.prototype=l,Modernizr=new Modernizr;var f,u=n.documentElement,c="svg"===u.nodeName.toLowerCase();!function(){var e={}.hasOwnProperty;f=o(e,"undefined")||o(e.call,"undefined")?function(e,n){return n in e&&o(e.constructor.prototype[n],"undefined")}:function(n,A){return e.call(n,A)}}(),l._l={},l.on=function(e,n){this._l[e]||(this._l[e]=[]),this._l[e].push(n),Modernizr.hasOwnProperty(e)&&setTimeout(function(){Modernizr._trigger(e,Modernizr[e])},0)},l._trigger=function(e,n){if(this._l[e]){var A=this._l[e];setTimeout(function(){var e,o;for(e=0;e<A.length;e++)(o=A[e])(n)},0),delete this._l[e]}},Modernizr._q.push(function(){l.addTest=i}),Modernizr.addAsyncTest(function(){function e(e,n,A){function o(n){var o=n&&"load"===n.type?1==t.width:!1,a="webp"===e;i(e,a&&o?new Boolean(o):o),A&&A(n)}var t=new Image;t.onerror=o,t.onload=o,t.src=n}var n=[{uri:"data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=",name:"webp"},{uri:"data:image/webp;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAABBxAR/Q9ERP8DAABWUDggGAAAADABAJ0BKgEAAQADADQlpAADcAD++/1QAA==",name:"webp.alpha"},{uri:"data:image/webp;base64,UklGRlIAAABXRUJQVlA4WAoAAAASAAAAAAAAAAAAQU5JTQYAAAD/////AABBTk1GJgAAAAAAAAAAAAAAAAAAAGQAAABWUDhMDQAAAC8AAAAQBxAREYiI/gcA",name:"webp.animation"},{uri:"data:image/webp;base64,UklGRh4AAABXRUJQVlA4TBEAAAAvAAAAAAfQ//73v/+BiOh/AAA=",name:"webp.lossless"}],A=n.shift();e(A.name,A.uri,function(A){if(A&&"load"===A.type)for(var o=0;o<n.length;o++)e(n[o].name,n[o].uri)})}),t(),a(s),delete l.addTest,delete l.addAsyncTest;for(var p=0;p<Modernizr._q.length;p++)Modernizr._q[p]();e.Modernizr=Modernizr}(window,document);
+
+ Modernizr.on('webp', function(result) {
+    if (result) {
+        console.log('Modernizr.on webp');
+      // supported
+    } else {
+        console.log('Modernizr.on no webp');
+      // not-supported
+    }
+  });
+
+function loadLocalCSS() {
+      var link = document.createElement("link");
+      link.type = "text/css";
+      link.rel = "stylesheet";
+      link.href="{% static 'css/bootstrap.min.css' %}"
+      document.head.insertAdjacentElement('afterbegin', link);
+  }
+
+AOS.init({
+    easing: "ease",
+    duration: 1200,
+    delay: 100,
+    offset: 0, // offset (in px) from the original trigger point
+    once: true,
+    mirror: true, // whether elements should animate out while scrolling past them
+    disable: "mobile"
+});
+
+// const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+const observer = lozad('.lozad', {
+    rootMargin: '100px 0px' // syntax similar to that of CSS Margin
+});
+observer.observe();
+
+function init_script(){
+	const countryText = {
+		singapore: "Our online grocery business is the largest in Singapore.",
+		thailand: "First to bring eCommerce innovations like livestreaming to Thailand.",
+		vietnam: "First and widest network of convenient stores as delivery drop-off points across Vietnam.",
+		indonesia: "The most reliable eCommerce delivery service in Indonesia, made possible by our leading logistics and technology capabilities.",
+		philippines: "The highest number of active online sellers are in the Philippines.",
+		malaysia: "First overseas Electronic World Trade Platform hub, lowering barriers for SMEs to enter new markets through eCommerce.",
+	}
+	$(".country").hover(function () {
+		var selectedCountry = $(this)
+		.data("country")
+		.toLowerCase();
+
+		$("#dot")
+		.removeClass("singapore thailand vietnam indonesia philippines malaysia")
+				.addClass(selectedCountry);
+			$("#box")
+		.removeClass("singapore thailand vietnam indonesia philippines malaysia")
+				.addClass(selectedCountry);
+		$("#box > span").text(selectedCountry.toUpperCase());
+		$("#box > p").text(countryText[selectedCountry]);
+		if(selectedCountry === "philippines"){
+			$("#box").css("margin-left", "-360px");
+			$("#box > span").text("THE PHILIPPINES");
+		} else {
+			$("#box").removeAttr('style');
+		}
+	});
+
+	// $(document).on('scroll', function() {
+	// 	if($(this).scrollTop()>=$('#third').position().top){
+	// 		$('#fixed-arrow').removeClass('grad-arrow').addClass('grad-arrow-blue');
+	// 	} else {
+	// 		$('#fixed-arrow').removeClass('grad-arrow-blue').addClass('grad-arrow');
+	// 	}
+	// 	if($(this).scrollTop()>=$('#third').position().top + 500){
+	// 		$('#fixed-arrow').removeClass('d-xl-block');
+	// 	} else {
+	// 		$('#fixed-arrow').addClass('d-xl-block');
+	// 	}
+	// });
+}
+
+$(document).ready(function(){
+	init_script();
+});
