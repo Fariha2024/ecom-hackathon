@@ -106,7 +106,7 @@ export default Footer;
 
 {/*"use client";*/}
 
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 {/*import React, { useState } from 'react';
 import { LuSendHorizontal } from "react-icons/lu";
 import { CiTwitter } from "react-icons/ci";

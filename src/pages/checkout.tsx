@@ -9,7 +9,7 @@ import Link from "next/link";
 import Image from "next/image"; // Import Image component for optimized images
 
 const Checkout = () => {
-  const { cart, getTotalItems } = useCart(); // Destructure cart and getTotalItems from context
+  const { cart} /**  getTotalItems**/ = useCart(); // Destructure cart and getTotalItems from context
   const [formData, setFormData] = useState({
     name: "",
     address: "",
@@ -49,7 +49,7 @@ const Checkout = () => {
             <div className="space-y-4">
               {cart.map((item: CartItem) => (
                 <div key={item.id} className="flex justify-between items-center border-b pb-4">
-                  <div className="flex items-center justify-center">
+                  <div className="flex items-center">
                     {item.imageUrl ? (
                       <Image
                         src={item.imageUrl}

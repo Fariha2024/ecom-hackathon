@@ -1,7 +1,3 @@
-"use client";
-
-
-// src/pages/track.tsx
 import { useState } from 'react';
 
 interface TrackingData {
@@ -38,6 +34,7 @@ export default function TrackPage() {
         setError(data.error || 'Unable to fetch tracking data.');
       }
     } catch (err) {
+      console.error('Error fetching tracking data:', err);
       setError('An error occurred while fetching tracking data.');
     } finally {
       setIsLoading(false);

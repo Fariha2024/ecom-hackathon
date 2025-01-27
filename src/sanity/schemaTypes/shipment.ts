@@ -1,6 +1,6 @@
 // schemas/shipment.js
 
-import { defineType, defineField } from 'sanity';
+import { defineType } from 'sanity';
 
 export const shipment = defineType({
 
